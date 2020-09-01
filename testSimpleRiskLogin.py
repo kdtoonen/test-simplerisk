@@ -27,7 +27,7 @@ def setup(request):
 class TestSecuritySimpleRisk:
     def test_login_admin_ok(self):
         self.go_to_login_page()
-        self.fill_out_username_and_password_in_login_screen("admin", "admin")
+        self.fill_out_username_and_password_in_login_screen("user", "user")
         self.submit_login_page()
         assert "Governance" in self.driver.page_source
 
@@ -44,7 +44,7 @@ class TestSecuritySimpleRisk:
         assert "Invalid username or password" in self.driver.page_source
 
     def go_to_login_page(self):
-        self.driver.get('http://localhost/')
+        self.driver.get('https://demo.simplerisk.com/')
 
     def fill_out_username_and_password_in_login_screen(self, username, password):
         self.driver.find_element_by_id("user").send_keys(username)
